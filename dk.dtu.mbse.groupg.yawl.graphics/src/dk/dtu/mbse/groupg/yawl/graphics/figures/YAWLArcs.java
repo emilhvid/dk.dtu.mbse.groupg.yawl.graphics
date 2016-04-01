@@ -9,8 +9,6 @@ import org.pnml.tools.epnk.gmf.extensions.graphics.figures.ArcFigure;
 import org.pnml.tools.epnk.pnmlcoremodel.Arc;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.TransitionNode;
-import org.pnml.tools.epnk.pntypes.signalnets.graphics.figures.SignalnetArcFigure.Type;
-
 import yawlnet.yawltypes.ArcType;
 import yawlnet.yawltypes.ArcTypes;
 
