@@ -9,6 +9,7 @@ import org.pnml.tools.epnk.gmf.extensions.graphics.figures.ArcFigure;
 import org.pnml.tools.epnk.pnmlcoremodel.Arc;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.TransitionNode;
+import org.pnml.tools.epnk.pntypes.signalnets.graphics.figures.SignalnetArcFigure.Type;
 
 import yawlnet.yawltypes.ArcType;
 import yawlnet.yawltypes.ArcTypes;
@@ -27,14 +28,14 @@ public class YAWLArcs extends ArcFigure {
 	}
 
 	@Override
-	public void Update(){
+	public void update() {
 		Type oldType = type;
 		type = getType();
 		if (oldType != type) {
 			setGraphics();
-		}		
+		}
 	}
-
+	
 	private Type getType() {
 		if (this.arc instanceof Arc) {
 			ArcType arctype = (arc).getType();

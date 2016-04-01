@@ -24,7 +24,7 @@ public class YAWLGraphics extends GraphicalExtension {
 		ArrayList<EClass> list = new ArrayList<EClass>();
 		list.add(SignalnetsPackage.eINSTANCE.getSignalNet());
 		return list;
-		
+			
 	}
 	
 	@Override
