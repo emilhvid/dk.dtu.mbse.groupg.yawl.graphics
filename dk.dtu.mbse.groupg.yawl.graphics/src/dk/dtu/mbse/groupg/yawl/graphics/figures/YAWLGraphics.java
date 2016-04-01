@@ -38,10 +38,17 @@ public class YAWLGraphics extends GraphicalExtension {
 	return list;
 	}
 
+	/*
+	 * The method createArcFigure() should return a new instance of the ArcFigure
+	 *  you implemented in the previous step (with the current arc as its parameter to the constructor).
+	 *  	  
+	 * @see org.pnml.tools.epnk.gmf.extensions.graphics.GraphicalExtension#createArcFigure(org.pnml.tools.epnk.pnmlcoremodel.Arc)
+	 */
 	@Override
 	public ArcFigure createArcFigure(Arc arc) {
+
 	if (arc instanceof Arc) {
-		return new ArcFigure((Arc) arc);
+		return new YAWLArc((yawlnet.yawltypes.Arc) arc);
 	}
 	return null;
 	}
