@@ -24,8 +24,6 @@ public class YAWLArcs extends ArcFigure {
 		super(arc);
 		type = getType();
 		setGraphics();
-
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

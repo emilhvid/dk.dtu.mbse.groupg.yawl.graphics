@@ -55,14 +55,4 @@ public class YAWLGraphics extends GraphicalExtension {
 	}
 	return null;
 	}
-	
-	void getExtendedNetObjects(){
-		
-	}
-	
-	ArcFigure createArcFigure(){
-		return null;
-		
-	}
-
 }
