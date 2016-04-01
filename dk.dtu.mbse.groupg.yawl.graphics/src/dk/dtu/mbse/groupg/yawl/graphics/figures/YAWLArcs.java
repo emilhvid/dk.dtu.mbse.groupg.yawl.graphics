@@ -6,7 +6,6 @@ import org.pnml.tools.epnk.gmf.extensions.graphics.decorations.CircleDecoration;
 import org.pnml.tools.epnk.gmf.extensions.graphics.decorations.FlashDecoration;
 import org.pnml.tools.epnk.gmf.extensions.graphics.decorations.ReisigsArrowHeadDecoration;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.ArcFigure;
-
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.TransitionNode;
 
@@ -16,7 +15,7 @@ import yawlnet.yawltypes.ArcTypes;
 
 public class YAWLArcs extends ArcFigure {
 
-	private enum Type { NORMAL, READ, INHIBIT, SIGNAL }
+	private enum Type { NORMAL, RESETARC }
 
 	private Type type;
 
@@ -35,43 +34,45 @@ public class YAWLArcs extends ArcFigure {
 			setGraphics();
 		}
 	}
-
+	
 	private Type getType() {
 		if (this.arc instanceof Arc) {
-			ArcType arctype = ((Arc) arc).getType();
+			ArcType arctype = ((Arc)arc).getType();
 			if (arctype != null) {
 				switch (arctype.getText().getValue()) {
 				case ArcTypes.NORMAL_VALUE:
-					return Type.READ;
+					return Type.NORMAL;
 				case ArcTypes.RESETARC_VALUE:
-					return Type.INHIBIT;
+					return Type.RESETARC;
 				}
-			} else {
-				Node source = arc.getSource();
-				Node target = arc.getTarget();
-				if (source instanceof TransitionNode &&
-						target instanceof TransitionNode) {
-					return Type.SIGNAL;
-				}
-			}
+			} 
+//				else {
+//				Node source = arc.getSource();
+//				Node target = arc.getTarget();
+//				if (source instanceof TransitionNode &&
+//						target instanceof TransitionNode) {
+//					return Type.SIGNAL;
+//				}
+//			}
 		}
 		return Type.NORMAL;
 	}
-
+	
 	private void setGraphics() {
 		RotatableDecoration targetDecorator = null;
 		RotatableDecoration sourceDecorator = null;
 
-		if (type == Type.READ) {
-			targetDecorator = new ReisigsArrowHeadDecoration();
-			sourceDecorator = new ReisigsArrowHeadDecoration();
-			this.setLineStyle(SWT.LINE_DASH);
-		} else if (type == Type.INHIBIT) {
-			targetDecorator = new CircleDecoration();
+		if (type == Type.NORMAL) {
+			//targetDecorator = new ReisigsArrowHeadDecoration();
+			//sourceDecorator = new ReisigsArrowHeadDecoration();
 			this.setLineStyle(SWT.LINE_SOLID);
-		} else if (type == Type.SIGNAL) {
-			sourceDecorator = new FlashDecoration();
-			targetDecorator = new ReisigsArrowHeadDecoration();
+		} else if (type == Type.RESETARC) {
+			this.setLineStyle(SWT.LINE_DASH);
+			//targetDecorator = new CircleDecoration();
+			
+//		} else if (type == Type.SIGNAL) {
+//			sourceDecorator = new FlashDecoration();
+//			targetDecorator = new ReisigsArrowHeadDecoration();
 		} else {
 			targetDecorator = new ReisigsArrowHeadDecoration();
 		}
