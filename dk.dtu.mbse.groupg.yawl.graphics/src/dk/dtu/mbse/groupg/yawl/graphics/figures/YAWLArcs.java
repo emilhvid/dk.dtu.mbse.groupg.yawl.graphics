@@ -6,9 +6,11 @@ import org.pnml.tools.epnk.gmf.extensions.graphics.decorations.CircleDecoration;
 import org.pnml.tools.epnk.gmf.extensions.graphics.decorations.FlashDecoration;
 import org.pnml.tools.epnk.gmf.extensions.graphics.decorations.ReisigsArrowHeadDecoration;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.ArcFigure;
-import org.pnml.tools.epnk.pnmlcoremodel.Arc;
+
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.TransitionNode;
+
+import yawlnet.yawltypes.Arc;
 import yawlnet.yawltypes.ArcType;
 import yawlnet.yawltypes.ArcTypes;
 
@@ -33,10 +35,10 @@ public class YAWLArcs extends ArcFigure {
 			setGraphics();
 		}
 	}
-	
+
 	private Type getType() {
 		if (this.arc instanceof Arc) {
-			ArcType arctype = (arc).getType();
+			ArcType arctype = ((Arc) arc).getType();
 			if (arctype != null) {
 				switch (arctype.getText().getValue()) {
 				case ArcTypes.NORMAL_VALUE:
@@ -55,7 +57,7 @@ public class YAWLArcs extends ArcFigure {
 		}
 		return Type.NORMAL;
 	}
-	
+
 	private void setGraphics() {
 		RotatableDecoration targetDecorator = null;
 		RotatableDecoration sourceDecorator = null;
