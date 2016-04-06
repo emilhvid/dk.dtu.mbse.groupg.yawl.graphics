@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.pnml.tools.epnk.gmf.extensions.graphics.GraphicalExtension;
 import org.pnml.tools.epnk.gmf.extensions.graphics.IUpdateableFigure;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.ArcFigure;
-import org.pnml.tools.epnk.gmf.extensions.graphics.figures.PlaceFigure;
 import org.pnml.tools.epnk.pnmlcoremodel.Arc;
 import org.pnml.tools.epnk.pnmlcoremodel.Place;
 
@@ -34,7 +33,7 @@ public class YAWLGraphics extends GraphicalExtension {
 		ArrayList<EClass> list = new ArrayList<EClass>();
 		if (netType.equals(YawltypesPackage.eINSTANCE.getYAWLnet())) {
 			list.add(YawltypesPackage.eINSTANCE.getArc());
-			//list.add(YawltypesPackage.eINSTANCE.getPlace());
+			list.add(YawltypesPackage.eINSTANCE.getPlace());
 		}
 	return list;
 	}
@@ -56,7 +55,7 @@ public class YAWLGraphics extends GraphicalExtension {
 	@Override
 	public IUpdateableFigure createPlaceFigure(Place place) {
 	if (place instanceof Place) {
-	return new PlaceFigure((Place) place);
+	return new YAWLPlace((yawlnet.yawltypes.Place) place);
 	}
 	return null;
 	}
