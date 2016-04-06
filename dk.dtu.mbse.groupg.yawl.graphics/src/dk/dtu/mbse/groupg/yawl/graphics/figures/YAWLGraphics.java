@@ -30,26 +30,25 @@ public class YAWLGraphics extends GraphicalExtension {
 
 	@Override
 	public List<EClass> getExtendedNetObjects(EClass netType) {
-	ArrayList<EClass> list = new ArrayList<EClass>();
-	if (netType.equals(YawltypesPackage.eINSTANCE.getYAWLnet())) {
-	list.add(YawltypesPackage.eINSTANCE.getArc());
-	list.add(YawltypesPackage.eINSTANCE.getPlace());
-	}
+		ArrayList<EClass> list = new ArrayList<EClass>();
+		if (netType.equals(YawltypesPackage.eINSTANCE.getYAWLnet())) {
+			list.add(YawltypesPackage.eINSTANCE.getArc());
+			//list.add(YawltypesPackage.eINSTANCE.getPlace());
+		}
 	return list;
 	}
 
 	/*
 	 * The method createArcFigure() should return a new instance of the ArcFigure
 	 *  you implemented in the previous step (with the current arc as its parameter to the constructor).
-	 *  	  
+	 *
 	 * @see org.pnml.tools.epnk.gmf.extensions.graphics.GraphicalExtension#createArcFigure(org.pnml.tools.epnk.pnmlcoremodel.Arc)
 	 */
 	@Override
 	public ArcFigure createArcFigure(Arc arc) {
-
-	if (arc instanceof Arc) {
-		return new YAWLArc((yawlnet.yawltypes.Arc) arc);
-	}
+		if (arc instanceof yawlnet.yawltypes.Arc) {
+			return new YAWLArc((yawlnet.yawltypes.Arc) arc);
+		}
 	return null;
 	}
 
