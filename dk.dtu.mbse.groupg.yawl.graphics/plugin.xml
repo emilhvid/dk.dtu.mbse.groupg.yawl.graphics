@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+
+	<extension
+	id="dk.dtu.mbse.groupg.yawl.graphics"
+	name="Signal event net graphical extensions"
+	point="org.pnml.tools.epnk.diagram.graphics">
+	<graphicsextension
+	class="dk.dtu.mbse.groupg.yawl.graphics.figures.YAWLGraphics"
+	description="Special graphics for ... signal event nets">
+	</graphicsextension>
+	</extension>
+	
+</plugin>

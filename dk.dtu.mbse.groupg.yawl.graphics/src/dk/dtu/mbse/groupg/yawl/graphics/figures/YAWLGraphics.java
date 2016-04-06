@@ -15,9 +15,10 @@ import yawlnet.yawltypes.YawltypesPackage;
 
 public class YAWLGraphics extends GraphicalExtension {
 
-//	public YAWLGraphics() {
-//		// TODO Auto-generated constructor stub
-//	}
+  public YAWLGraphics() {
+	  super();
+  }
+ 		// TODO Auto-generated constructor stub	}
 
 	@Override
 	public
