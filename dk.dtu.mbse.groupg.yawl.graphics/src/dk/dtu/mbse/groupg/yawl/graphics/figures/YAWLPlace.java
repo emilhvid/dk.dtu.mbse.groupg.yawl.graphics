@@ -58,10 +58,16 @@ public class YAWLPlace extends PlaceFigure {
 		super.fillShape(graphics);
 		org.eclipse.draw2d.geometry.Rectangle rectangle = this.getClientArea();
 		int m = 0;
-		if (place instanceof Place)
-			m = getMarking((Place) place);
 		int cx = rectangle.x + rectangle.width/2;
 		int cy = rectangle.y + rectangle.height/2;
+		if (place instanceof Place) {
+			m = getMarking((Place) place);
+			if(type == Type.END) {
+				graphics.setBackgroundColor(getForegroundColor());
+				graphics.fillRectangle(cx, cy, 10, 10);
+			}
+		}
+
 		if (m == 0) {
 			return;
 		} else if (m == 1) {
@@ -84,12 +90,6 @@ public class YAWLPlace extends PlaceFigure {
 			graphics.fillOval(cx+1, cy+1, 12, 12);
 		} else {
 			graphics.drawString(""+m, cx-5, cy-7);
-		}
-		//Draw black rectangle if place is start or end (Should be worked on later)
-		if (place instanceof Place ) {
-			if(type == Type.END) {
-				graphics.fillRectangle(cx, cy, 10, 10);
-			}
 		}
 	}
 
