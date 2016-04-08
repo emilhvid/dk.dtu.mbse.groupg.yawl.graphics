@@ -66,6 +66,10 @@ public class YAWLPlace extends PlaceFigure {
 				graphics.setBackgroundColor(getForegroundColor());
 				graphics.fillRectangle(cx, cy, 10, 10);
 			}
+			if(type == Type.START){
+				graphics.setBackgroundColor(getForegroundColor());
+				graphics.fillOval(cx, cy, 10, 10);
+			}
 		}
 
 		if (m == 0) {
