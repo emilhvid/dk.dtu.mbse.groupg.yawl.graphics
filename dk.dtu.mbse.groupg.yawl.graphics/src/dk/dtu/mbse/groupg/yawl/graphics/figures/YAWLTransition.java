@@ -1,27 +1,22 @@
 package dk.dtu.mbse.groupg.yawl.graphics.figures;
-
-
-
 import org.eclipse.draw2d.Graphics;
 
-import org.pnml.tools.epnk.gmf.extensions.graphics.figures.PlaceFigure;
+import org.pnml.tools.epnk.gmf.extensions.graphics.figures.TransitionFigure;
 
 import yawlnet.yawltypes.Place;
 import yawlnet.yawltypes.PlaceType;
 import yawlnet.yawltypes.PlaceTypes;
+import yawlnet.yawltypes.Transition;
+import yawlnet.yawltypes.TransitionType;
+import yawlnet.yawltypes.TransitionTypes;
 
-
-public class YAWLPlace extends PlaceFigure {
-	
-	private enum Type { NORMAL, START, END }
-	
+public class YAWLTransition extends TransitionFigure{
+	private enum Type {AND,XOR,OR}
 	private Type type;
-
-
-	public YAWLPlace(Place place) {
-		super(place);
+	
+	public YAWLTransition(Transition transition) {
+		super(transition);
 	}
-
 	@Override
 	public void update() {
 		this.repaint();
@@ -34,20 +29,31 @@ public class YAWLPlace extends PlaceFigure {
 	}
 		
 	private Type getType() {
-		if (this.place instanceof Place) {
-			PlaceType placeType = ((Place) place).getType();
-			if (placeType != null) {
-				switch (placeType.getText().getValue()) {
-					case PlaceTypes.NORMAL_VALUE:
-						return Type.NORMAL;
-					case PlaceTypes.START_VALUE:
-						return Type.START;
-					case PlaceTypes.END_VALUE:
-						return Type.END;
+		if (this.transition instanceof Transition) {
+			TransitionType transitionType = ((Transition) transition).getJoin();
+			if (transitionType != null) {
+				switch (transitionType.getText().getValue()) {
+					case TransitionTypes.AND_VALUE:
+						return Type.AND;
+					case TransitionTypes.OR_VALUE:
+						return Type.OR;
+					case TransitionTypes.XOR_VALUE:
+						return Type.XOR;
+				}
+			}
+			transitionType = ((Transition) transition).getSplit();
+			if (transitionType != null) {
+				switch (transitionType.getText().getValue()) {
+					case TransitionTypes.AND_VALUE:
+						return Type.AND;
+					case TransitionTypes.OR_VALUE:
+						return Type.OR;
+					case TransitionTypes.XOR_VALUE:
+						return Type.XOR;
 				}
 			}
 		}
-		return Type.NORMAL;
+		return null;
 	}
 
 	@Override
@@ -57,13 +63,17 @@ public class YAWLPlace extends PlaceFigure {
 		int m = 0;
 		int cx = rectangle.x + rectangle.width/2;
 		int cy = rectangle.y + rectangle.height/2;
-		if (place instanceof Place) {
-			m = getMarking((Place) place);
-			if(type == Type.END) {
+		if (transition instanceof Transition) {
+			m = getMarking((Transition) transition);
+			if(type == Type.AND) {
 				graphics.setBackgroundColor(getForegroundColor());
 				graphics.fillRectangle(cx, cy, 10, 10);
 			}
-			if(type == Type.START){
+			if(type == Type.OR){
+				graphics.setBackgroundColor(getForegroundColor());
+				graphics.fillOval(cx, cy, 10, 10);
+			}
+			if(type == Type.XOR){
 				graphics.setBackgroundColor(getForegroundColor());
 				graphics.fillOval(cx, cy, 10, 10);
 			}
@@ -94,7 +104,7 @@ public class YAWLPlace extends PlaceFigure {
 		}
 	}
 
-	private int getMarking(Place place) {
+	private int getMarking(Transition transition) {
 		/* Marking marking = place.getMarking();
 		if (marking != null) {
 			BigInteger value = marking.getText();

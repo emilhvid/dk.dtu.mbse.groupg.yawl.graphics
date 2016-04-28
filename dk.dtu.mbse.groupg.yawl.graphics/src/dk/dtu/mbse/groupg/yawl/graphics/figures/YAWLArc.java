@@ -61,9 +61,11 @@ public class YAWLArc extends ArcFigure {
 			//sourceDecorator = new ReisigsArrowHeadDecoration();
 			this.setLineStyle(SWT.LINE_SOLID);
 		} else if (type == Type.RESETARC) {
-			this.setLineStyle(SWT.LINE_DASH);
-			//targetDecorator = new CircleDecoration();
+			this.setLineStyle(SWT.LINE_DASH);			
+			this.setLineCap(SWT.CAP_ROUND);
 
+		}
+		
 //		} else if (type == Type.SIGNAL) {
 //			sourceDecorator = new FlashDecoration();
 //			targetDecorator = new ReisigsArrowHeadDecoration();
@@ -72,6 +74,6 @@ public class YAWLArc extends ArcFigure {
 //		}
 //		this.setTargetDecoration(targetDecorator);
 //		this.setSourceDecoration(sourceDecorator);
-	}
+	
 	}
 }

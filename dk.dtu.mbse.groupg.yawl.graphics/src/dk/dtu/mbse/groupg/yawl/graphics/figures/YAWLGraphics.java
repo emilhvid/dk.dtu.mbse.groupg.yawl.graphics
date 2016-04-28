@@ -9,6 +9,7 @@ import org.pnml.tools.epnk.gmf.extensions.graphics.IUpdateableFigure;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.ArcFigure;
 import org.pnml.tools.epnk.pnmlcoremodel.Arc;
 import org.pnml.tools.epnk.pnmlcoremodel.Place;
+import org.pnml.tools.epnk.pnmlcoremodel.Transition;
 
 import yawlnet.yawltypes.YawltypesPackage;
 
@@ -34,6 +35,7 @@ public class YAWLGraphics extends GraphicalExtension {
 		if (netType.equals(YawltypesPackage.eINSTANCE.getYAWLnet())) {
 			list.add(YawltypesPackage.eINSTANCE.getArc());
 			list.add(YawltypesPackage.eINSTANCE.getPlace());
+			list.add(YawltypesPackage.eINSTANCE.getTransition());
 		}
 	return list;
 	}
@@ -56,6 +58,14 @@ public class YAWLGraphics extends GraphicalExtension {
 	public IUpdateableFigure createPlaceFigure(Place place) {
 	if (place instanceof Place) {
 	return new YAWLPlace((yawlnet.yawltypes.Place) place);
+	}
+	return null;
+	}
+	
+	@Override
+	public IUpdateableFigure createTransitionFigure(Transition transition) {
+	if (transition instanceof Transition) {
+	return new YAWLTransition((yawlnet.yawltypes.Transition) transition);
 	}
 	return null;
 	}
