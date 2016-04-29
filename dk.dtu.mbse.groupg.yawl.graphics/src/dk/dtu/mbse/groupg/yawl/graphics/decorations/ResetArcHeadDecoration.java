@@ -1,9 +1,13 @@
 package dk.dtu.mbse.groupg.yawl.graphics.decorations;
 
+import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RotatableDecoration;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
+
+import com.sun.org.apache.xalan.internal.xsltc.cmdline.Transform;
 
 /**
  * This is an head decoration, which can be used for reset arcs. 
@@ -18,13 +22,14 @@ public class ResetArcHeadDecoration extends RectangleFigure implements Rotatable
 	private final double dim = 13;
 
 	/**
-	 * The points defining the arrowhead of the arrow head
+	 * The points defining the rect of the arc head
 	 */
-	private final double[] arrowdef =  new double[] {
-			-1, 0,
-			12, 5,
-			7, 0,
-			12, -5 };
+	private final double[] rectCoords =  new double[] {
+			0, -5,
+			0, 5,
+			10, 5,
+			10, -5
+	};
 
 	public ResetArcHeadDecoration() {
 		super();
@@ -46,7 +51,7 @@ public class ResetArcHeadDecoration extends RectangleFigure implements Rotatable
 	/**
 	 * The points of the arrowhead after transformation
 	 */
-	private final int[] points =  new int[arrowdef.length];
+	private final int[] points =  new int[rectCoords.length];
 
 	public void setReferencePoint(Point p) {
 		if (pl != null && ( pl.x != p.x || pl.y != p.y)) {
@@ -80,7 +85,10 @@ public class ResetArcHeadDecoration extends RectangleFigure implements Rotatable
 		//      that from me.
 
         // draw the arrow head as a filled polygon (with the current foreground colour)
-		graphics.setBackgroundColor(graphics.getForegroundColor());
+		graphics.setBackgroundColor(getForegroundColor());
+		Rectangle rect = new Rectangle((int)cx-5, (int)cy-5, 10, 10);
+		
+//		graphics.fillRectangle(rect);
 		graphics.fillPolygon(points);
 	}
 
@@ -108,8 +116,8 @@ public class ResetArcHeadDecoration extends RectangleFigure implements Rotatable
 
     private void calculatePoints() {
     	for (int i = 0; i+1 < points.length; i = i + 2) {
-    		points[i]   = (int) Math.round((arrowdef[i] * sinAlpha - arrowdef[i+1] * cosAlpha + cx));
-    		points[i+1] = (int) Math.round((arrowdef[i] * cosAlpha + arrowdef[i+1] * sinAlpha + cy));
+    		points[i]   = (int) Math.round((rectCoords[i] * sinAlpha - rectCoords[i+1] * cosAlpha + cx));
+    		points[i+1] = (int) Math.round((rectCoords[i] * cosAlpha + rectCoords[i+1] * sinAlpha + cy));
     	}
     }
 
