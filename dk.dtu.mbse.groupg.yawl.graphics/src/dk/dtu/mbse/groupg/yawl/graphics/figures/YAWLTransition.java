@@ -1,8 +1,12 @@
 package dk.dtu.mbse.groupg.yawl.graphics.figures;
 import org.eclipse.draw2d.Graphics;
-
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.swt.graphics.Device;
+import org.eclipse.swt.graphics.DeviceData;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.TransitionFigure;
 
+import javafx.scene.image.Image;
 import yawlnet.yawltypes.Place;
 import yawlnet.yawltypes.PlaceType;
 import yawlnet.yawltypes.PlaceTypes;
@@ -27,6 +31,7 @@ public class YAWLTransition extends TransitionFigure{
 			this.repaint();
 		}
 	}
+	
 		
 	private Type getType() {
 		if (this.transition instanceof Transition) {
@@ -63,20 +68,89 @@ public class YAWLTransition extends TransitionFigure{
 		int m = 0;
 		int cx = rectangle.x + rectangle.width/2;
 		int cy = rectangle.y + rectangle.height/2;
+		TransitionType transitionType;
 		if (transition instanceof Transition) {
+			transitionType = ((Transition) transition).getJoin();
+			if (transitionType != null) {
+				// Tegn Join grafik..
+				if(type == Type.AND) {
+					graphics.setBackgroundColor(getForegroundColor());
+					// Set up AND join figure
+					PointList points = new PointList();
+					points.addPoint(new Point(cx-20, cy+20));
+					points.addPoint(new Point(cx, cy));
+					points.addPoint(new Point(cx-20, cy-20));
+					// Draw the triangle figure
+					graphics.drawPolygon(points);
+					// Draw the vertical line in center
+					graphics.drawLine(new Point(cx, cy+20), new Point(cx, cy-20));
+				}
+				else if(type == Type.OR){
+					graphics.setBackgroundColor(getForegroundColor());
+					// Set up OR split figure
+					PointList points = new PointList();
+					points.addPoint(new Point(cx-20, cy));
+					points.addPoint(new Point(cx-10, cy+20));
+					points.addPoint(new Point(cx, cy));
+					points.addPoint(new Point(cx-10, cy-20));
+					// Draw the triangle figure
+					graphics.drawPolygon(points);
+					// Draw the vertical line in center
+					graphics.drawLine(new Point(cx, cy+20), new Point(cx, cy-20));
+				}
+				else if(type == Type.XOR){
+					graphics.setBackgroundColor(getForegroundColor());
+					// Set up XOR join figure
+					PointList points = new PointList();
+					points.addPoint(new Point(cx, cy+20));
+					points.addPoint(new Point(cx-20, cy));
+					points.addPoint(new Point(cx, cy-20));
+					// Draw the figure
+					graphics.drawPolygon(points);
+				}
+			}
+			
+			transitionType = ((Transition) transition).getSplit();
+			if (transitionType != null) {
+				// Tegn split grafik..
+				if(type == Type.AND) {
+					graphics.setBackgroundColor(getForegroundColor());
+					// Set up AND split figure
+					PointList points = new PointList();
+					points.addPoint(new Point(cx, cy));
+					points.addPoint(new Point(cx+20, cy+20));
+					points.addPoint(new Point(cx+20, cy-20));
+					// Draw the triangle figure
+					graphics.drawPolygon(points);
+					// Draw the vertical line in center
+					graphics.drawLine(new Point(cx, cy+20), new Point(cx, cy-20));
+				}
+				else if(type == Type.OR){
+					graphics.setBackgroundColor(getForegroundColor());
+					// Set up OR join figure
+					PointList points = new PointList();
+					points.addPoint(new Point(cx, cy));
+					points.addPoint(new Point(cx+10, cy+20));
+					points.addPoint(new Point(cx+20, cy));
+					points.addPoint(new Point(cx+10, cy-20));
+					// Draw the triangle figure
+					graphics.drawPolygon(points);
+					// Draw the vertical line in center
+					graphics.drawLine(new Point(cx, cy+20), new Point(cx, cy-20));
+				}
+				else if(type == Type.XOR){
+					graphics.setBackgroundColor(getForegroundColor());
+					// Set up XOR split figure
+					PointList points = new PointList();
+					points.addPoint(new Point(cx, cy-20));
+					points.addPoint(new Point(cx+20, cy));
+					points.addPoint(new Point(cx, cy+20));
+					
+					// Draw the figure
+					graphics.drawPolygon(points);
+				}
+			}
 			m = getMarking((Transition) transition);
-			if(type == Type.AND) {
-				graphics.setBackgroundColor(getForegroundColor());
-				graphics.fillRectangle(cx, cy, 10, 10);
-			}
-			if(type == Type.OR){
-				graphics.setBackgroundColor(getForegroundColor());
-				graphics.fillOval(cx, cy, 10, 10);
-			}
-			if(type == Type.XOR){
-				graphics.setBackgroundColor(getForegroundColor());
-				graphics.fillOval(cx, cy, 10, 10);
-			}
 		}
 
 		if (m == 0) {
