@@ -1,6 +1,8 @@
 package dk.dtu.mbse.groupg.yawl.graphics.figures;
 
+import org.eclipse.draw2d.RotatableDecoration;
 import org.eclipse.swt.SWT;
+import org.pnml.tools.epnk.gmf.extensions.graphics.decorations.ReisigsArrowHeadDecoration;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.ArcFigure;
 
 import yawlnet.yawltypes.Arc;
@@ -53,7 +55,7 @@ public class YAWLArc extends ArcFigure {
 	}
 
 	private void setGraphics() {
-		//RotatableDecoration targetDecorator = null;
+		RotatableDecoration targetDecorator = null;
 		//RotatableDecoration sourceDecorator = null;
 
 		if (type == Type.NORMAL) {
@@ -63,6 +65,7 @@ public class YAWLArc extends ArcFigure {
 		} else if (type == Type.RESETARC) {
 			this.setLineStyle(SWT.LINE_DASH);			
 			this.setLineCap(SWT.CAP_ROUND);
+			targetDecorator = new ReisigsArrowHeadDecoration();
 
 		}
 		
