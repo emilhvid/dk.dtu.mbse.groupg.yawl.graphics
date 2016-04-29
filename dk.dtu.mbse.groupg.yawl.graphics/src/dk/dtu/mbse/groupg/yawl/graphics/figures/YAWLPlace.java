@@ -2,9 +2,14 @@ package dk.dtu.mbse.groupg.yawl.graphics.figures;
 
 
 
+import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
-
+import org.eclipse.draw2d.Polygon;
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.PlaceFigure;
+
+import com.sun.prism.paint.Color;
 
 import yawlnet.yawltypes.Place;
 import yawlnet.yawltypes.PlaceType;
@@ -60,16 +65,16 @@ public class YAWLPlace extends PlaceFigure {
 		if (place instanceof Place) {
 			m = getMarking((Place) place);
 			if(type == Type.END) {
-				graphics.setBackgroundColor(getForegroundColor());
-//				graphics.fillRectangle(cx, cy, 10, 10);
+				graphics.setBackgroundColor(ColorConstants.red);
 				graphics.fillRectangle(cx-6, cy-6, 12, 12);
-
-				
 			}
 			if(type == Type.START){
-				graphics.setBackgroundColor(getForegroundColor());
-//				graphics.fillOval(cx, cy, 10, 10);
-				graphics.fillOval(cx-6, cy-6, 12, 12);
+				graphics.setBackgroundColor(ColorConstants.green);
+				PointList points = new PointList();
+				points.addPoint(new Point(cx-6, cy-6));
+				points.addPoint(new Point(cx+6, cy));
+				points.addPoint(new Point(cx-6, cy+6));
+				graphics.fillPolygon(points);
 			}
 		}
 

@@ -11,7 +11,7 @@ import com.sun.org.apache.xalan.internal.xsltc.cmdline.Transform;
 
 /**
  * This is an head decoration, which can be used for reset arcs. 
- * 
+ * Inspiration from Ekkart Kindler's org.pnml.tools.epnk.gmf.extensions.graphics.decorations.ReisigsArrowHeadDecoration!
  * @author Nicklas Hansen
  */
 public class ResetArcHeadDecoration extends RectangleFigure implements RotatableDecoration {
