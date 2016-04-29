@@ -6,6 +6,7 @@ import org.pnml.tools.epnk.gmf.extensions.graphics.decorations.FlashDecoration;
 import org.pnml.tools.epnk.gmf.extensions.graphics.decorations.ReisigsArrowHeadDecoration;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.ArcFigure;
 
+import dk.dtu.mbse.groupg.yawl.graphics.decorations.ResetArcHeadDecoration;
 import yawlnet.yawltypes.Arc;
 import yawlnet.yawltypes.ArcType;
 import yawlnet.yawltypes.ArcTypes;
@@ -62,12 +63,11 @@ public class YAWLArc extends ArcFigure {
 		if (type == Type.NORMAL) {
 			//targetDecorator = new ReisigsArrowHeadDecoration();
 			//sourceDecorator = new ReisigsArrowHeadDecoration();
-			
 			this.setLineStyle(SWT.LINE_SOLID);
 		} else if (type == Type.RESETARC) {
 			this.setLineStyle(SWT.LINE_DASH);			
 //			this.setLineCap(SWT.CAP_ROUND);
-			targetDecorator = new FlashDecoration();
+			targetDecorator = new ResetArcHeadDecoration();
 			this.setTargetDecoration(targetDecorator);
 		}
 		
