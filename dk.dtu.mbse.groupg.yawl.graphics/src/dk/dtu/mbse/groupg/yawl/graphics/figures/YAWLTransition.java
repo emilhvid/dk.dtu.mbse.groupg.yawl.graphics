@@ -2,14 +2,8 @@ package dk.dtu.mbse.groupg.yawl.graphics.figures;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
-import org.eclipse.swt.graphics.Device;
-import org.eclipse.swt.graphics.DeviceData;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.TransitionFigure;
 
-import javafx.scene.image.Image;
-import yawlnet.yawltypes.Place;
-import yawlnet.yawltypes.PlaceType;
-import yawlnet.yawltypes.PlaceTypes;
 import yawlnet.yawltypes.Transition;
 import yawlnet.yawltypes.TransitionType;
 import yawlnet.yawltypes.TransitionTypes;
