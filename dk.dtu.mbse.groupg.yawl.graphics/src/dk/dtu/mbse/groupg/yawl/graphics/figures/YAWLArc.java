@@ -60,7 +60,8 @@ public class YAWLArc extends ArcFigure {
 		//RotatableDecoration sourceDecorator = null;
 
 		if (type == Type.NORMAL) {
-			//targetDecorator = new ReisigsArrowHeadDecoration();
+			targetDecorator = new ReisigsArrowHeadDecoration();
+			this.setTargetDecoration(targetDecorator);
 			//sourceDecorator = new ReisigsArrowHeadDecoration();
 			
 			this.setLineStyle(SWT.LINE_SOLID);
