@@ -65,6 +65,7 @@ public class YAWLTransition extends TransitionFigure{
 		TransitionType transitionType;
 		if (transition instanceof Transition) {
 			transitionType = ((Transition) transition).getJoin();
+			graphics.setLineWidth(2);
 			if (transitionType != null) {
 				// Tegn Join grafik..
 				if(type == Type.AND) {
