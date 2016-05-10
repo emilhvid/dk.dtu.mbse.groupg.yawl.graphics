@@ -1,3 +1,6 @@
+/**
+ * @author Nicklas Hansen (s144858)
+ */
 package dk.dtu.mbse.groupg.yawl.graphics.figures;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Point;
@@ -54,6 +57,9 @@ public class YAWLTransition extends TransitionFigure{
 		return null;
 	}
 
+	/**
+	 * @author Nicklas Hansen (s144858)
+	 */
 	@Override
 	protected void fillShape(Graphics graphics) {
 		super.fillShape(graphics);

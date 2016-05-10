@@ -1,3 +1,6 @@
+/**
+ * @author Nicklas Hansen (s144858)
+ */
 package dk.dtu.mbse.groupg.yawl.graphics.figures;
 
 import org.eclipse.draw2d.RotatableDecoration;

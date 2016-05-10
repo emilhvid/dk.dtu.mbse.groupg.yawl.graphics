@@ -1,6 +1,7 @@
 package dk.dtu.mbse.groupg.yawl.graphics.figures;
-
-
+/**
+ * @author Nicklas Hansen (s144858)
+ */
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
