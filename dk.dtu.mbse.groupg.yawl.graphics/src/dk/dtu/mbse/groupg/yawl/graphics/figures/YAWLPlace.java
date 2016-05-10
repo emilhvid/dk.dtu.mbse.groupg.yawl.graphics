@@ -70,9 +70,9 @@ public class YAWLPlace extends PlaceFigure {
 			if(type == Type.START){
 				graphics.setBackgroundColor(ColorConstants.green);
 				PointList points = new PointList();
-				points.addPoint(new Point(cx-6, cy-6));
-				points.addPoint(new Point(cx+6, cy));
-				points.addPoint(new Point(cx-6, cy+6));
+				points.addPoint(new Point(cx-7, cy-10));
+				points.addPoint(new Point(cx+10, cy));
+				points.addPoint(new Point(cx-7, cy+10));
 				graphics.fillPolygon(points);
 			}
 		}
