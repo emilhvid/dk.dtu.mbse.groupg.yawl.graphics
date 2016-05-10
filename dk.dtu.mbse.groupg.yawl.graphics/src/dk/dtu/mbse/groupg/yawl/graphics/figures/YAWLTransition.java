@@ -14,11 +14,10 @@ public class YAWLTransition extends TransitionFigure{
 	
 	public YAWLTransition(Transition transition) {
 		super(transition);
+		type = getType();
 	}
 	@Override
 	public void update() {
-		this.repaint();
-		
 		Type oldType = type;
 		type = getType();
 		if (oldType != type) {

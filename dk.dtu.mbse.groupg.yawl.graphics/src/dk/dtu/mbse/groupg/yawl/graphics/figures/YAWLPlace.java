@@ -25,12 +25,11 @@ public class YAWLPlace extends PlaceFigure {
 
 	public YAWLPlace(Place place) {
 		super(place);
+		type = getType();
 	}
 
 	@Override
 	public void update() {
-		this.repaint();
-		
 		Type oldType = type;
 		type = getType();
 		if (oldType != type) {
