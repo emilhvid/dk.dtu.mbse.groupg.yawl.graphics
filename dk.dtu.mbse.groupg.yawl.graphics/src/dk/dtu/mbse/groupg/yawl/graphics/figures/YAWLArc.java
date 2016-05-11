@@ -58,6 +58,10 @@ public class YAWLArc extends ArcFigure {
 		}
 		return Type.NORMAL;
 	}
+	
+	/***
+	 * @author Stefan Hyltoft s144872
+	 */
 
 	private void setGraphics() {
 		RotatableDecoration targetDecorator = null;

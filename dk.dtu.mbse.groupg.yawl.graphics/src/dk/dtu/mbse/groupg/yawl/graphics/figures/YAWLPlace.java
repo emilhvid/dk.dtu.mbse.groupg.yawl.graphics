@@ -55,6 +55,10 @@ public class YAWLPlace extends PlaceFigure {
 		return Type.NORMAL;
 	}
 
+	/**
+	 * Orignal @author Ekkart Kindler from org.pnml.tools
+	 * @author Stefan Hyltoft s144872
+	 */
 	@Override
 	protected void fillShape(Graphics graphics) {
 		super.fillShape(graphics);
