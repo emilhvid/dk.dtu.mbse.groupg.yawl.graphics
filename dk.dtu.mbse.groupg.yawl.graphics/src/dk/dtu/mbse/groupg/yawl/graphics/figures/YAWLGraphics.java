@@ -1,5 +1,7 @@
 package dk.dtu.mbse.groupg.yawl.graphics.figures;
-
+/**
+ * @author  Emil Hvid
+ */
 import java.util.ArrayList;
 import java.util.List;
 

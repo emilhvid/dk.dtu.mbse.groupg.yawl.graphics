@@ -1,5 +1,5 @@
 /**
- * @author Nicklas Hansen (s144858)
+ * @author Nicklas Hansen (s144858), Emil Hvid
  */
 package dk.dtu.mbse.groupg.yawl.graphics.figures;
 
