@@ -73,7 +73,7 @@ public class YAWLTransition extends TransitionFigure{
 			graphics.setLineWidth(2);
 			if (transitionType != null) {
 				// Tegn Join grafik..
-				if(type == Type.AND) {
+				if(transitionType.getText().getValue() == TransitionTypes.AND_VALUE) {
 					graphics.setBackgroundColor(getForegroundColor());
 					// Set up AND join figure
 					PointList points = new PointList();
@@ -85,7 +85,7 @@ public class YAWLTransition extends TransitionFigure{
 					// Draw the vertical line in center
 					graphics.drawLine(new Point(cx, cy+20), new Point(cx, cy-20));
 				}
-				else if(type == Type.OR){
+				else if(transitionType.getText().getValue() == TransitionTypes.OR_VALUE){
 					graphics.setBackgroundColor(getForegroundColor());
 					// Set up OR split figure
 					PointList points = new PointList();
@@ -98,7 +98,7 @@ public class YAWLTransition extends TransitionFigure{
 					// Draw the vertical line in center
 					graphics.drawLine(new Point(cx, cy+20), new Point(cx, cy-20));
 				}
-				else if(type == Type.XOR){
+				else if(transitionType.getText().getValue() == TransitionTypes.XOR_VALUE){
 					graphics.setBackgroundColor(getForegroundColor());
 					// Set up XOR join figure
 					PointList points = new PointList();
@@ -113,7 +113,7 @@ public class YAWLTransition extends TransitionFigure{
 			transitionType = ((Transition) transition).getSplit();
 			if (transitionType != null) {
 				// Tegn split grafik..
-				if(type == Type.AND) {
+				if(transitionType.getText().getValue() == TransitionTypes.AND_VALUE) {
 					graphics.setBackgroundColor(getForegroundColor());
 					// Set up AND split figure
 					PointList points = new PointList();
@@ -125,7 +125,7 @@ public class YAWLTransition extends TransitionFigure{
 					// Draw the vertical line in center
 					graphics.drawLine(new Point(cx, cy+20), new Point(cx, cy-20));
 				}
-				else if(type == Type.OR){
+				else if(transitionType.getText().getValue() == TransitionTypes.OR_VALUE){
 					graphics.setBackgroundColor(getForegroundColor());
 					// Set up OR join figure
 					PointList points = new PointList();
@@ -138,7 +138,7 @@ public class YAWLTransition extends TransitionFigure{
 					// Draw the vertical line in center
 					graphics.drawLine(new Point(cx, cy+20), new Point(cx, cy-20));
 				}
-				else if(type == Type.XOR){
+				else if(transitionType.getText().getValue() == TransitionTypes.XOR_VALUE){
 					graphics.setBackgroundColor(getForegroundColor());
 					// Set up XOR split figure
 					PointList points = new PointList();
